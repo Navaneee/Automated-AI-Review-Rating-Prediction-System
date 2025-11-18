@@ -2,7 +2,7 @@
 An end-to-end AI-driven rating prediction system that automatically predicts 1–5 star ratings from customer review text across e-commerce products.
 This project combines Machine Learning, Deep Learning, and Transformer-based NLP models to achieve multi-class review rating prediction accuracy ≥ 70%.
 
- Key Features
+ ## Key Features
 
 Large-scale Amazon review dataset (500K+ reviews) preprocessed and cleaned.
 
@@ -24,11 +24,11 @@ Comprehensive Model Evaluation Dashboard (Accuracy, F1-Score, Confusion Matrix).
 
 Fully documented data preprocessing → EDA → model development → evaluation → reporting pipeline.
 
- Objective
+## Objective
 
 To develop a scalable and explainable AI system capable of predicting user satisfaction levels directly from textual reviews, enabling smarter insights for e-commerce businesses and automated sentiment-driven analytics.
 
- Tech Stack
+## Tech Stack
 
 Python, Pandas, NumPy, Scikit-learn, TensorFlow/Keras, HuggingFace Transformers, Matplotlib/Seaborn
 
@@ -36,6 +36,29 @@ Jupyter Notebooks / Google Colab for experimentation
 
 Git & GitHub for version control and project documentation
 
- Target Performance
+## Target Performance
 
 Achieve ≥ 70% multi-class accuracy (1–5 rating prediction) through optimized transformer-based fine-tuning on domain-specific Amazon review data.
+
+## Setup
+
+1. Create a virtual environment
+```bash
+python -m venv venv
+```
+2. Install requirements
+```bash
+pip install -r requirements.txt
+```
+3. Run FastAPI
+```bash
+cd app
+uvicorn main:app
+```
+4. Example request
+```bash
+curl --location 'http://127.0.0.1:8000/predict' \
+--header 'Content-Type: application/json' \
+--data '{"review":"This product is good"}'
+```  
+   
