@@ -47,9 +47,10 @@ Achieve ≥ 70% multi-class accuracy (1–5 rating prediction) through optimized
 git clone https://github.com/Navaneee/Automated-AI-Review-Rating-Prediction-System.git review_prediction
 cd review_prediction
 ```
-2. Create a virtual environment
+2. Create and activate a virtual environment
 ```bash
 python -m venv venv
+.\venv\Scripts\Activate.ps1  
 ```
 3. Install requirements
 ```bash
@@ -60,10 +61,16 @@ pip install -r requirements.txt
 cd app
 uvicorn main:app
 ```
-5. Example request
+5. Example
+Request
 ```bash
 curl --location 'http://127.0.0.1:8000/predict' \
 --header 'Content-Type: application/json' \
 --data '{"review":"This product is good"}'
 ```  
-   
+Response 
+```bash
+{
+    "predicted_rating": 3
+}
+```  
