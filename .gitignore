@@ -1,3 +1,9 @@
+#project related
+venv/
+models/
+.venv/
+sqlite3.db
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
