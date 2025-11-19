@@ -6,13 +6,17 @@ This project combines Machine Learning, Deep Learning, and Transformer-based NLP
 
 Large-scale Amazon review dataset (500K+ reviews) preprocessed and cleaned.
 
+Dataset link: https://drive.google.com/file/d/1-wrd2R5NtY_5aROEXnjLs4FgbcpaIgwI/view?usp=sharing
+
 Supports 5-class classification (ratings 1–5).
 
 Baseline ML Models: Logistic Regression, Naive Bayes, Random Forest, XGBoost, SVM.
 
 Deep Learning Models: CNN, LSTM, BiLSTM, GRU.
 
-Transformer Models: BERT, RoBERTa, DistilBERT, ALBERT, XLNet, ELECTRA.
+Transformer Models: DistilBERT.
+
+Model Link: https://drive.google.com/drive/folders/1zMngWK7igmeTBglnMMatnnoxj2ZSKdmO?usp=drive_link
 
 Implements tokenization, stemming, lemmatization, and TF-IDF / Word2Vec / GloVe embeddings.
 
@@ -62,15 +66,61 @@ cd app
 uvicorn main:app
 ```
 5. Example
-Request
-```bash
-curl --location 'http://127.0.0.1:8000/predict' \
---header 'Content-Type: application/json' \
---data '{"review":"This product is good"}'
-```  
-Response 
-```bash
-{
-    "predicted_rating": 3
-}
-```  
+    A. predict endpoint
+        ```bash
+        curl --location 'http://127.0.0.1:8000/predict' \
+            --header 'Content-Type: application/json' \
+            --data '{"review":"This product is good"}'
+        ```  
+        Response 
+        ```bash
+        {
+            "predicted_rating": 3
+        }
+        ```
+
+
+    B. save_prediction endpoint
+        ```bash
+        curl --location 'http://127.0.0.1:8000/save_prediction' \
+            --header 'Content-Type: application/json' \
+            --data '{"review":"This product is not good","rating":2}'
+        ```  
+        Response 
+        ```bash
+        {
+            "message": "Review saved successfully",
+            "timestamp": "2025-11-19T08:04:52.588694"
+        }
+        ```
+
+
+    C. history endpoint
+        ```bash
+        curl --location 'http://127.0.0.1:8000/history'
+        ```  
+        Response 
+        ```bash
+        {
+            "history": [
+                {
+                    "id": 1,
+                    "review": "This product is bad",
+                    "rating": 1,
+                    "timestamp": "2025-11-19T08:03:58.326429"
+                },
+                {
+                    "id": 2,
+                    "review": "This product is good",
+                    "rating": 4,
+                    "timestamp": "2025-11-19T08:04:14.894709"
+                },
+                {
+                    "id": 3,
+                    "review": "This product is not good",
+                    "rating": 2,
+                    "timestamp": "2025-11-19T08:04:52.588694"
+                }
+            ]
+        }
+        ```
